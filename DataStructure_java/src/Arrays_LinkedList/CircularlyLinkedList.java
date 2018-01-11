@@ -1,6 +1,6 @@
 package Arrays_LinkedList;
 
-public class SinglyLinkedList <E> {
+public class CircularlyLinkedList <E> {
 	
 	// --- nested Node Class ---
 	public static class Node<E>{
@@ -15,21 +15,20 @@ public class SinglyLinkedList <E> {
 		public void setNext(Node<E> n) { next = n; }
 	}
 	// ---- nested Node Class END ---
-	
-	//instance variables of SinglyLinkedList
-	private Node<E> head = null; //head node of list (or null if empty)
+
+	//instance variables of CircularlyLinkedList
 	private Node<E> tail = null; //last node of list (or null if empty)
 	private int size = 0; //number of nodes in the list
 	
 	//constructs an initially empty list
-	public SinglyLinkedList() {}
+	public CircularlyLinkedList() {}
 	
 	//access methods
 	public int size() { return size; }
 	public boolean isEmpty() { return size == 0; }
 	public E first() { //returns (but does not remove) the first element
 		if(isEmpty()) return null;
-		return head.getElement();
+		return tail.getNext().getElement(); // ***the head is after the tail***
 	}
 	public E last() { //returns (but does not remove) the last element
 		if(isEmpty()) return null;
@@ -37,28 +36,30 @@ public class SinglyLinkedList <E> {
 	}
 	
 	//update methods
+	public void rotate() { //rotate the first element to the back of the list 
+		if(tail != null) tail = tail.getNext(); //the old head becomes the new tail 			
+	}
 	public void addFirst(E e) {
-		head = new Node<>(e, head); //create and link a new node
-		if(size == 0) tail = head; //special case: new node also becomes tail 
+		if(size==0) {
+			tail = new Node<>(e, null);
+			tail.setNext(tail); //link to itself circularly 
+		}else {
+			Node<E> newest = new Node<>(e, tail.getNext());
+			tail.setNext(newest);
+		}
 		size++;
 	}
 	public void addLast(E e) {
-		Node<E> newest = new Node<>(e, null); //create a new node, it will eventually be the tail
-		if(isEmpty()) {
-			head = newest;
-		}else {
-			tail.setNext(newest); //new node after existing tail
-		}
-		tail = newest; //new node becomes the tail
-		size++;
+		addFirst(e); //insert new element e to the end of the list
+		tail = tail.getNext(); //now new element becomes the tail 
 	}
 	public E removeFirst() { //removes and returns first element 
 		if(isEmpty()) return null;
-		E answer = head.getElement();
-		head = head.getNext();
+		Node<E> head = tail.getNext();
+		if(head==tail) tail = null; //must be the only node left?
+		else tail.setNext(head.getNext()); //removes "HEAD" from the list
 		size--;
-		if(size==0) tail = null;
-		return answer;
+		return head.getElement();
 	}
 	
 }
