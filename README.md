@@ -1,7 +1,7 @@
 # Data Structure in Java
 
 
-*This is a repository for personal Datat Structure in Java.*
+*This is a repository for personal Data Structure in Java.*
 
 **Copyright 2014, Michael T. Goodrich, Roberto Tamassia, Michael H. Goldwasser**
 
