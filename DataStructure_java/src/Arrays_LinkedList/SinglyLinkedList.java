@@ -61,4 +61,38 @@ public class SinglyLinkedList <E> {
 		return answer;
 	}
 	
+	public boolean equals(Object o) {
+		if(o==null) return false;
+		if(getClass() != o.getClass()) return false;
+		
+		SinglyLinkedList other = (SinglyLinkedList) o;
+		if(size != other.size) return false;
+		Node walkA = head; //traverse the primary list
+		Node walkB = other.head; //travers the secondary list
+		while(walkA != null) {
+			if(!walkA.getElement().equals(walkB.getElement())) return false;
+			walkA = walkA.getNext();
+			walkB = walkB.getNext();
+		}
+		
+		return true; //if we reach this, everythig matched successfully 
+	}
+	
+	public SinglyLinkedList<E> clone() throws CloneNotSupportedException {
+		//always use inherited Object.clone(0 to create initial copy
+		SinglyLinkedList<E> other = (SinglyLinkedList<E>) super.clone(); //safe cast
+		if(size>0) { //we need independant chain of nodes
+			other.head = new Node<>(head.getElement(), null);
+			Node<E> walk = head.getNext(); //walk through remainder of original list
+			Node<E> otherTail = other.head; //remember most recently created node
+			while(walk != null) { //make a new node storing same element
+				Node<E> newest = new Node<>(walk.getElement(), null);
+				otherTail.setNext(newest); //link previous node to this one
+				otherTail = newest;
+				walk = walk.getNext();
+			}
+		}
+		return other;
+	}
+	
 }
