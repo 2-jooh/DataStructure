@@ -1,13 +1,13 @@
 
 public class ArrayStack implements Stack<E> {
-	private final static int CAPACITY = Integer.MAX_VALUE;
-	private E[] data;
-	private int pointer;
+	private final static int CAPACITY = 1000; //defalut array capacity
+	private E[] data; //generic array used for storage
+	private int pointer = -1; //index of the top element of stack (initailize with -1, because that makes size of the stack 0.)
 	
-	public ArrayStack() {
+	public ArrayStack() { //constructs stack with defalut capacity
 		this(CAPACITY);
 	}
-	public ArrayStack(int capacity) {
+	public ArrayStack(int capacity) { //constructs stack with given capacity
 		data = (E[]) new Object[capacity];
 		pointer = -1;
 	}
@@ -25,7 +25,7 @@ public class ArrayStack implements Stack<E> {
 	@Override
 	public void push(E e) throws IllegalStateException{
 		if(size()==data.length) throw new IllegalStateException("Stack is full");
-		data[++pointer]=e;
+		data[++pointer] = e; //increment pointer before storing new item
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class ArrayStack implements Stack<E> {
 	public E pop() {
 		if(isEmpty()) return null;
 		E answer = data[pointer];
-		data[pointer] = null;
+		data[pointer] = null; //deference to help garbage collection 
 		pointer--;
 		return answer;
 	}

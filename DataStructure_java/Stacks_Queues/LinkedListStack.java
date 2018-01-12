@@ -1,8 +1,8 @@
 
 public class LinkedListStack implements Stack<E> {	
-	private SinglyLinkedList<E> list;
+	private SinglyLinkedList<E> list; //an empty list
 	
-	public LinkedStack() {
+	public LinkedStack() { //new stack relies on the initially empty list 
 		list = new SinglyLinkedList<>();
 	}
 	
