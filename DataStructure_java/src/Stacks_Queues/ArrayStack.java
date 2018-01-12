@@ -1,5 +1,6 @@
+package Stacks_Queues;
 
-public class ArrayStack implements Stack<E> {
+public class ArrayStack<E> implements Stack<E> {
 	private final static int CAPACITY = 1000; //defalut array capacity
 	private E[] data; //generic array used for storage
 	private int pointer = -1; //index of the top element of stack (initailize with -1, because that makes size of the stack 0.)

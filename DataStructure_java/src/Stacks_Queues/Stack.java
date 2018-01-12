@@ -1,3 +1,4 @@
+package Stacks_Queues;
 /**
  * 
  * A collection of objects that are inserted and removed
@@ -9,7 +10,7 @@
  * @author Michael H. Goldwasser
  *
  */
-public interface Stack <E> {
+public interface Stack<E> {
 	int size();
 	boolean isEmpty();
 	void push(E e);

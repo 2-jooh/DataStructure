@@ -1,8 +1,11 @@
+package Stacks_Queues;
 
-public class LinkedListStack implements Stack<E> {	
+import Arrays_LinkedList.SinglyLinkedList;
+
+public class LinkedListStack<E> implements Stack<E> {	
 	private SinglyLinkedList<E> list; //an empty list
 	
-	public LinkedStack() { //new stack relies on the initially empty list 
+	public LinkedListStack() { //new stack relies on the initially empty list 
 		list = new SinglyLinkedList<>();
 	}
 	
