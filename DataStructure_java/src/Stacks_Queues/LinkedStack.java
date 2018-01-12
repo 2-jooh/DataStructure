@@ -2,10 +2,10 @@ package Stacks_Queues;
 
 import Arrays_LinkedList.SinglyLinkedList;
 
-public class LinkedListStack<E> implements Stack<E> {	
+public class LinkedStack<E> implements Stack<E> {	
 	private SinglyLinkedList<E> list; //an empty list
 	
-	public LinkedListStack() { //new stack relies on the initially empty list 
+	public LinkedStack() { //new stack relies on the initially empty list 
 		list = new SinglyLinkedList<>();
 	}
 	
@@ -21,7 +21,7 @@ public class LinkedListStack<E> implements Stack<E> {
 
 	@Override
 	public void push(E e) {
-		list.addFirst(e);
+		list.addFirst(e); //**First In Last Out**
 	}
 
 	@Override
