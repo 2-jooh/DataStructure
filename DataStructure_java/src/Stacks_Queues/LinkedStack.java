@@ -21,7 +21,7 @@ public class LinkedStack<E> implements Stack<E> {
 
 	@Override
 	public void push(E e) {
-		list.addFirst(e); //**First In Last Out**
+		list.addFirst(e); //**First In Last Out (Last In First Out)**
 	}
 
 	@Override
