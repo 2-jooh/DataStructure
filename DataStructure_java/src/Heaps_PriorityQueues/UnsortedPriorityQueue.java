@@ -21,9 +21,17 @@ public class UnsortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V>{
 		}
 		return small;
 	}
-
-	/** unsorted 이므로 가장 마지막에 배치 */
+	
+	
 	@Override
+	/** O(1) */
+	public int size() {
+		return list.size();
+	}
+	
+	@Override
+	/** unsorted 이므로 가장 마지막에 배치 
+	 *  O(1) */
 	public Entry<K, V> insert(K key, V value) throws IllegalArgumentException {
 		checkKey(key);
 		Entry<K, V> newest = new PQEntry<>(key, value);
@@ -32,20 +40,18 @@ public class UnsortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V>{
 	}
 
 	@Override
+	/** O(n) */
 	public Entry<K, V> min() {
 		if(list.isEmpty()) return null;
 		return findMin().getElement();
 	}
 
 	@Override
+	/** O(n) */
 	public Entry<K, V> removeMin() {
 		if(list.isEmpty()) return null;
 		return list.remove(findMin());
 	}
-	
-	@Override
-	public int size() {
-		return list.size();
-	}
+
 
 }

@@ -11,9 +11,16 @@ public class SortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V>{
 	
 	public SortedPriorityQueue() { super(); }
 	public SortedPriorityQueue(Comparator<K> comp) { super(comp); }
-
-	/** unsorted priority queue와는 다르게 newest가 들어갈 위치를 찾아야 함 */
+	
 	@Override
+	/** O(1) */
+	public int size() {
+		return list.size();
+	}
+	
+	@Override
+	/** unsorted priority queue와는 다르게 newest가 들어갈 위치를 찾아야 함 
+	 * O(n) */
 	public Entry<K, V> insert(K key, V value) throws IllegalArgumentException {
 		checkKey(key);
 		Entry<K, V> newest = new PQEntry<>(key, value);
@@ -32,20 +39,18 @@ public class SortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V>{
 	}
 
 	@Override
+	/** O(1) */
 	public Entry<K, V> min() {
 		if(list.isEmpty()) return null;
 		return list.first().getElement();
 	}
 
 	@Override
+	/** O(1) */
 	public Entry<K, V> removeMin() {
 		if(list.isEmpty()) return null;
 		return list.remove(list.first());
 	}
-	
-	@Override
-	public int size() {
-		return list.size();
-	}
+
 
 }
