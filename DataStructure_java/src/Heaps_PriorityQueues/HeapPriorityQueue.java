@@ -7,6 +7,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 	
 	/** primary collection of priority queue entries */
 	protected ArrayList<Entry<K, V>> heap = new ArrayList<>();
+	
 	/** Creates an empty priority queue based on the natural ordering of its keys */
 	public HeapPriorityQueue() { super(); }
 	/** Creates an empty priority queue using the given comparator to order keys */
@@ -50,6 +51,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 			j = smallChildIndex;
 		}
 	}
+	
 	/**
 	 * Heap T는 n개의 노드를 가지고 있음, 각각의 노드는 key-value entry.
 	 * complete binary tree이므로 heap T의 높이는 O(logN)
@@ -90,7 +92,9 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 	
 	
 	/* Implementatin of a Bottom-Up Heap Construction - p350 */
-	/** O(n) */
+	/** O(n) 
+	 *  단순히 n개의 원소를 heap에 넣으려면, 한 개를 넣을 때 마다 O(logN)의 시간이 소요되므로, O(NlogN)의 시간이 소요되나,
+	 *  이렇게 bottom-up의 방식으로 heap을 만들면 O(n)으로 시간을 단축시킬 수 있다. */
 	/** Creates a priority queue initialized with the given key-value pairs. */
 	public HeapPriorityQueue(K[] keys, V[] values) {
 		super();

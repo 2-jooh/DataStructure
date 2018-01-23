@@ -7,6 +7,7 @@ import ListAbstractions.Position;
 import ListAbstractions.PositionalList;
 
 public class UnsortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V>{
+	
 	private PositionalList<Entry<K, V>> list = new LinkedPositionalList<>();
 	
 	public UnsortedPriorityQueue() { super(); }
@@ -20,8 +21,7 @@ public class UnsortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V>{
 				small = walk;
 		}
 		return small;
-	}
-	
+	}	
 	
 	@Override
 	/** O(1) */

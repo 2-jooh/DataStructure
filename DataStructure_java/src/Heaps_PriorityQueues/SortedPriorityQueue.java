@@ -6,7 +6,8 @@ import ListAbstractions.LinkedPositionalList;
 import ListAbstractions.Position;
 import ListAbstractions.PositionalList;
 
-public class SortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V>{	
+public class SortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V>{
+	
 	private PositionalList<Entry<K, V>> list = new LinkedPositionalList<>();
 	
 	public SortedPriorityQueue() { super(); }
